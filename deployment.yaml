@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: hello-world
+ labels:
+   app: hello-world
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-world
+        image: nginx:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
